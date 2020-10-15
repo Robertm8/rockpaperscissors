@@ -23,24 +23,7 @@ def play():
         choice = input()
         win_count, loss_count, tie_count, n = battle(choice, win_count, loss_count, tie_count, n)  # calls the main function
 
-def result(m):
-    """"Updates various global variables based on input from battle() function."""
-    global tie_count, loss_count, win_count, n #critical to declare global variables or it will think they are local
-    if m == "tie":
-        print("Tie!")
-        tie_count += 1
-        n += 1
-        announce()
-    elif m == "loss":
-        print("Loss!")
-        loss_count += 1
-        n += 1
-        announce()
-    elif m == "win":
-        print ("Win!")
-        win_count += 1
-        n += 1
-        announce()
+    print("Win percentage:", str(int(100 * (win_count / (win_count + loss_count + tie_count)) // 1)) + "%")  # Ending stats
 
 def battle(choice):
     """"The main if/else chain to compare user choice with random opponent choice."""
@@ -79,6 +62,25 @@ def battle(choice):
         print("Invalid choice. Choose again!")
 
     win_count, loss_count, tie_count, n = result(message, win_count, loss_count, tie_count, n)
+
+    return win_count, loss_count, tie_count, n
+
+
+def result(m, win_count, loss_count, tie_count, n):
+    if m == "tie":
+        print("Tie!")
+        tie_count += 1
+        n += 1
+    elif m == "loss":
+        print("Loss!")
+        loss_count += 1
+        n += 1
+    elif m == "win":
+        print("Win!")
+        win_count += 1
+        n += 1
+
+    announce(win_count, loss_count, tie_count)
 
     return win_count, loss_count, tie_count, n
 
