@@ -15,9 +15,13 @@ def play():
     print("You'll face off against ten opponents.")
     print("Your first challenger awaits.")
 
-def announce():
-    """"Simple function that announces statistics."""
-    print("Wins:", win_count, "Losses:", loss_count, "Ties:", tie_count)
+    rounds = int(input("Enter how many rounds you would like to play for: "))
+    while n < rounds:
+        for y in range(1, 4):  # Simple loop for creating some visual breaks between lines of text
+            print(".")
+        print("Choose Rock, Paper, or Scissors")
+        choice = input()
+        win_count, loss_count, tie_count, n = battle(choice, win_count, loss_count, tie_count, n)  # calls the main function
 
 def result(m):
     """"Updates various global variables based on input from battle() function."""
@@ -74,14 +78,14 @@ def battle(choice):
     else:                                               #Else case for a wrong input. Does not use up a turn.
         print("Invalid choice. Choose again!")
 
-win_count = 0
-loss_count = 0
-tie_count = 0
-n = 1
+    win_count, loss_count, tie_count, n = result(message, win_count, loss_count, tie_count, n)
 
-while n < 11:
-    for y in range(1, 4): #Simple loop for creating some visual breaks between lines of text
-        print(".")
-    print("Choose Rock, Paper, or Scissors")
-    battle(input()) #calls the main function
-print("Win percentage:", str(int(100 * (win_count / (win_count + loss_count + tie_count)) // 1)) + "%") #Ending stats
+    return win_count, loss_count, tie_count, n
+
+
+def announce(win_count, loss_count, tie_count):
+    """"Simple function that announces statistics."""
+    print("Wins:", win_count, "Losses:", loss_count, "Ties:", tie_count)
+
+
+play()
