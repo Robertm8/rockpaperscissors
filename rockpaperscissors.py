@@ -30,7 +30,7 @@ def result(m):
 def battle(choice):
     """"The main if/else chain to compare user choice with random opponent choice."""
     enemy = random.randint(1, 3) #critical function for randomizing opponent choice. The 3 is INCLUSIVE.
-    if choice == "Rock":
+    if choice.lower() == "rock":
         if enemy == 1:
             print("Opponent chose Rock!")
             result("tie")
@@ -40,7 +40,7 @@ def battle(choice):
         elif enemy == 3:
             print("Opponent chose Scissors!")
             result("win")
-    elif choice == "Paper":
+    elif choice.lower() == "paper":
         if enemy == 1:
             print("Opponent chose Rock!")
             result("win")
@@ -50,7 +50,7 @@ def battle(choice):
         elif enemy == 3:
             print("Opponent chose Scissors!")
             result("loss")
-    elif choice == "Scissors":
+    elif choice.lower() == "scissors":
         if enemy == 1:
             print("Opponent chose Rock!")
             result("loss")
@@ -73,4 +73,4 @@ while n < 11:
         print(".")
     print("Choose Rock, Paper, or Scissors")
     battle(input()) #calls the main function
-print("Win percentage:", str(int(100 * (win_count / (win_count + loss_count + tie_count)) // 1)) + "%") #Ending stats
+print("Win percentage:", str(int(100 * (win_count / (win_count + loss_count + tie_count)))) + "%") #Ending stats
