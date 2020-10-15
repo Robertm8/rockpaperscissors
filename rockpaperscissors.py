@@ -1,8 +1,19 @@
 import random #imports module to take advantage of randint() function
 
-print("Welcome to the Rock/Paper/Scissors World Championship League.")
-print("You'll face off against ten opponents.")
-print("Your first challenger awaits.")
+
+def play():
+    """
+    Starts a new game and handles all game stats.
+    """
+
+    win_count = 0
+    loss_count = 0
+    tie_count = 0
+    n = 0
+
+    print("Welcome to the Rock/Paper/Scissors World Championship League.")
+    print("You'll face off against ten opponents.")
+    print("Your first challenger awaits.")
 
 def announce():
     """"Simple function that announces statistics."""
