@@ -1,4 +1,4 @@
-import random #imports module to take advantage of randint() function
+import random  # imports module to take advantage of randint() function
 
 
 def play():
@@ -25,40 +25,42 @@ def play():
 
     print("Win percentage:", str(int(100 * (win_count / (win_count + loss_count + tie_count)) // 1)) + "%")  # Ending stats
 
-def battle(choice):
+
+def battle(choice, win_count, loss_count, tie_count, n):
     """"The main if/else chain to compare user choice with random opponent choice."""
-    enemy = random.randint(1, 3) #critical function for randomizing opponent choice. The 3 is INCLUSIVE.
+    enemy = random.randint(1, 3)  # critical function for randomizing opponent choice. The 3 is INCLUSIVE.
+    message = ""
     if choice == "Rock":
         if enemy == 1:
             print("Opponent chose Rock!")
-            result("tie")
+            message = "tie"
         elif enemy == 2:
             print("Opponent chose Paper!")
-            result("loss")
+            message = "loss"
         elif enemy == 3:
             print("Opponent chose Scissors!")
-            result("win")
+            message = "win"
     elif choice == "Paper":
         if enemy == 1:
             print("Opponent chose Rock!")
-            result("win")
+            message = "win"
         elif enemy == 2:
             print("Opponent chose Paper!")
-            result("tie")
+            message = "tie"
         elif enemy == 3:
             print("Opponent chose Scissors!")
-            result("loss")
+            message = "loss"
     elif choice == "Scissors":
         if enemy == 1:
             print("Opponent chose Rock!")
-            result("loss")
+            message = "loss"
         elif enemy == 2:
             print("Opponent chose Paper!")
-            result("win")
+            message = "win"
         elif enemy == 3:
             print("Opponent chose Scissors!")
-            result("tie")
-    else:                                               #Else case for a wrong input. Does not use up a turn.
+            message = "tie"
+    else:                                               # Else case for a wrong input. Does not use up a turn.
         print("Invalid choice. Choose again!")
 
     win_count, loss_count, tie_count, n = result(message, win_count, loss_count, tie_count, n)
